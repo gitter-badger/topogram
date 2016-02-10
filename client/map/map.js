@@ -218,7 +218,7 @@ for (var i = 0, l = selectedNodes.length; i < l; i++) {
             // console.log("d.properties._id",d.properties._id)
             if (edges[i]._id == d.properties._id) {
                 var souredge = edges[i];
-         var color = souredge.data.color || yellow
+         var color = souredge.data.color 
                 console.log("color",color);
             }
         }

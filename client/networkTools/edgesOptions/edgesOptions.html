@@ -19,20 +19,20 @@
   
   <label for="edgesColor">Edges Color</label>
   <select class="browser-default" name="edgesColor" id="edgesColor">
-      <option value="{{fix}}">Unique color</option>
+      <option value="{{fix}}">fix</option>
       {{#if edgeHasWeight }}
-      <option value="{{count}}">Weight</option>
+      <option value="{{count}}">count</option>
       {{/if }}
       {{#if hasColor }}
-      <option value="{{file}}">From file</option>
+      <option value="{{file}}">file</option>
       {{/if}}
       {{#if hasGroup }}
-      <option value="{{group}}">Type</option>
+      <option value="{{group}}">group</option>
       {{/if }}
 
+      <option value="{{nodesMeanGroup}}">nodesMeanGroup</option>
+      <option value="{{nodesMeanColor}}">nodesMeanColor</option>
       <!--
-        <option value="{{nodesMeanGroup}}">Unique color</option>
-        <option value="{{nodesMeanColor}}">Unique color</option>
         <option value="{{nodesDash}}">Unique color</option>
         <option value="{{sigma}}">Unique color</option>
         <option value="{{compNodEdg}}">Unique color</option>
