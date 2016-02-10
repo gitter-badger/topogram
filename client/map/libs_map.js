@@ -35,3 +35,11 @@
      }
      return color;
  };
+// Use Leaflet to implement a D3 geometric transformation.
+convertLatLngToCoords = function(lat,lng) {
+    return map.latLngToLayerPoint(new L.LatLng(lat, lng))
+}
+
+convertCoordsToLatLng = function(x,y) {
+    return map.layerPointToLatLng(new L.Point(x, y))
+}
