@@ -1,4 +1,12 @@
+ hasGeo = function() {
+   var node = Nodes.findOne({}, {
+       fields: {
+           'data.data': 1
+       }
+   });
 
+   return node.data.data.lat ? true : false;
+ }
 
  applyLatLngToLayer = function(map,d) {
      var y = d.geometry.coordinates[1];
