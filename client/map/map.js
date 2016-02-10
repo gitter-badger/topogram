@@ -54,7 +54,7 @@ Template.map.rendered = function() {
         }
     });
 
-    // GeoJSON collection for Nodes
+    /*-----GeoJSON collection for Nodes------------*/
     var collection = turf.featurecollection(features);
     var q = [];
     // console.log( 'collection', collection );
@@ -116,7 +116,7 @@ Template.map.rendered = function() {
         }
     });
 
-    // GeoJSON collection for Edges
+    /*--------------- GeoJSON collection for Edges-----------*/
     // console.log( "q2", q );
     var collectionedges = turf.featurecollection(q);
     // console.log( "collectionedges", collectionedges );
@@ -124,7 +124,7 @@ Template.map.rendered = function() {
     //var colleccentr = turf.featurecollection( q );
     // console.log('colleccentr', colleccentr);
 
-    // setup map
+    /*----------------- setup map---------------------------*/
     L.Icon.Default.imagePath = 'packages/bevanhunt_leaflet/images';
     var url = 'http://tile.stamen.com/toner/{z}/{x}/{y}.png';
     //var url = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
@@ -153,7 +153,7 @@ Template.map.rendered = function() {
     // console.log( 'path', path );
     // console.log( 'transform', transform );
 
-    // radius scale 
+    /*------------------ radius scale -----------------*/
     var radius = d3.scale.linear()
         .domain([
             Session.get('minParamForDisplay'),
@@ -175,12 +175,13 @@ Template.map.rendered = function() {
             // console.log('radius(d.properties.countSrc + d.properties.countTar)', radius(d.properties.countSrc + d.properties.countTar));
             return ~~(radius(d.properties.countSrc + d.properties.countTar));
         })
-        .style('fill', 'red')
+        .style('fill', 'red'###HERE WE WRITE A FUNCTION TO RETRIEVE EACH NODE S COLOR )
+
         .style('stroke', 'none')
         .style('opacity', .6);
     // console.log( 'feature', feature );
 
-    // Edge features
+    /*------------------ Edge features-----------------------*/
 
     var g2 = svg.append('g').attr('class', 'leaflet-zoom-hide');
     // console.log( g2 );
@@ -188,7 +189,7 @@ Template.map.rendered = function() {
     var featureedges = g2.selectAll('line')
         .data(collectionedges.features).enter()
         .append('line')
-        .style('stroke', 'yellow')
+        .style('stroke', 'yellow'###HERE WE WRITE A FUNCTION TO RETRIEVE EACH NODE S COLOR)
         .style('stroke-width', '4')
         .style('opacity', .8);
 
@@ -202,7 +203,7 @@ Template.map.rendered = function() {
         // console.log( infos );
     });
 
-    // define projection
+    /*----------------- define projection----------------*/
     map.on('resize', resetView);
     map.on('move', update);
     map.on('zoom', update);
@@ -252,7 +253,7 @@ Template.map.rendered = function() {
     }
     window.setInterval(resetView, 500);
 
-    // Use Leaflet to implement a D3 geometric transformation.
+    /*---------- Use Leaflet to implement a D3 geometric transformation.----------*/
     function projectPoint(x, y) {
         var point = map.latLngToLayerPoint(map, new L.LatLng(x, y));
         this.stream.point(point.x, point.y);
