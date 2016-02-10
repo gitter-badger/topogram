@@ -99,8 +99,12 @@ Template.map.rendered = function() {
                     [edges[id].data.sourcelat, edges[id].data.sourcelong],
                     [edges[id].data.targetlat, edges[id].data.targetlong]
                 ], {
+                    //HERE WE ADD THE DATAS WE NEED LATER
+
                     //'topogramId': selectedEdge.topogramId,
-                    //'_id': selectedEdge._id,
+
+                    '_id': edges[id]._id,
+                    'color': edges[id].data.color
                     //'countSrc': selectedEdge.nodeEdgesSrc.length,
                     //'countTar': selectedEdge.nodeEdgesTar.length
 
@@ -178,18 +182,15 @@ Template.map.rendered = function() {
             return ~~(radius(d.properties.countSrc + d.properties.countTar));
         })
         .style('fill', function(d) {
-// ###HERE WE WRITE A FUNCTION TO RETRIEVE EACH NODE S COLOR
-            // console.log("dnodes",d.properties._id);
-            // var colorNodei = selectedNodes.find({ _id:  d.properties._id})
-            // var color = colorNodei.data.color
-            // console.log("color",color)
+// ###HERE WE HAVE WRITTEN A FUNCTION TO RETRIEVE EACH NODES COLOR
+
 for (var i = 0, l = selectedNodes.length; i < l; i++) {
-            console.log("selectedNodes[i].data.id",selectedNodes[i])
-            console.log("d.properties._id",d.properties._id)
+            // console.log("selectedNodes[i].data.id",selectedNodes[i])
+            // console.log("d.properties._id",d.properties._id)
             if (selectedNodes[i]._id == d.properties._id) {
                 var sourNode = selectedNodes[i];
                 var color = sourNode.data.color
-                console.log("color",color);
+                // console.log("color",color);
             }
         }
             return color;
@@ -210,10 +211,23 @@ for (var i = 0, l = selectedNodes.length; i < l; i++) {
         .data(collectionedges.features).enter()
         .append('line')
         .style('stroke', function(d) {
+            for (var i = 0, l = edges.length; i < l; i++) {
+            console.log("edge",edges[i]._id)
+            console.log(d)
+            // console.log("selectedNodes[i].data.id",selectedNodes[i])
+            // console.log("d.properties._id",d.properties._id)
+            if (edges[i]._id == d.properties._id) {
+                var souredge = edges[i];
+         var color = souredge.data.color || yellow
+                console.log("color",color);
+            }
+        }
+            return color;
+            // return 'red' ;//for tests
             // console.log("edge",edges)
 // ###HERE WE WRITE A FUNCTION TO RETRIEVE EACH EDGE COLOR
             // console.log("d",d);
-            return 'yellow' ;
+            // return 'yellow' ;
         })
         .style('stroke-width', '4')
         .style('opacity', .8);
