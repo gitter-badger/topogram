@@ -166,20 +166,40 @@ Template.map.rendered = function() {
         .range([5, maxRadius]);
 
     ///IMPROVEME: Size need to be set according to the number of edges;
+            
+            // console.log("node", selectedNodes.forEach(function(id) {console.log("id", id.data.color);return id} ))
     var feature = g.selectAll('circle')
         .data(collection.features).enter()
         .append('circle')
         .attr('r', function(d) {
+            
             //TODO:IMPLEMENT SELECTOR FOR THE RADIUS SIZE
 
-            // console.log('radius(d.properties.countSrc + d.properties.countTar)', radius(d.properties.countSrc + d.properties.countTar));
             return ~~(radius(d.properties.countSrc + d.properties.countTar));
         })
-        .style('fill', 'red' )
+        .style('fill', function(d) {
 // ###HERE WE WRITE A FUNCTION TO RETRIEVE EACH NODE S COLOR
+            // console.log("dnodes",d.properties._id);
+            // var colorNodei = selectedNodes.find({ _id:  d.properties._id})
+            // var color = colorNodei.data.color
+            // console.log("color",color)
+for (var i = 0, l = selectedNodes.length; i < l; i++) {
+            console.log("selectedNodes[i].data.id",selectedNodes[i])
+            console.log("d.properties._id",d.properties._id)
+            if (selectedNodes[i]._id == d.properties._id) {
+                var sourNode = selectedNodes[i];
+                var color = sourNode.data.color
+                console.log("color",color);
+            }
+        }
+            return color;
+            // return 'red' ;
+        })
+
         .style('stroke', 'none')
         .style('opacity', .6);
     // console.log( 'feature', feature );
+    // console.log('g',g);
 
     /*------------------ Edge features-----------------------*/
 
@@ -189,8 +209,12 @@ Template.map.rendered = function() {
     var featureedges = g2.selectAll('line')
         .data(collectionedges.features).enter()
         .append('line')
-        .style('stroke', 'yellow')
-// ###HERE WE WRITE A FUNCTION TO RETRIEVE EACH NODE S COLOR
+        .style('stroke', function(d) {
+            // console.log("edge",edges)
+// ###HERE WE WRITE A FUNCTION TO RETRIEVE EACH EDGE COLOR
+            // console.log("d",d);
+            return 'yellow' ;
+        })
         .style('stroke-width', '4')
         .style('opacity', .8);
 
