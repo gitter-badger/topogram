@@ -175,8 +175,8 @@ Template.map.rendered = function() {
             // console.log('radius(d.properties.countSrc + d.properties.countTar)', radius(d.properties.countSrc + d.properties.countTar));
             return ~~(radius(d.properties.countSrc + d.properties.countTar));
         })
-        .style('fill', 'red'###HERE WE WRITE A FUNCTION TO RETRIEVE EACH NODE S COLOR )
-
+        .style('fill', 'red' )
+// ###HERE WE WRITE A FUNCTION TO RETRIEVE EACH NODE S COLOR
         .style('stroke', 'none')
         .style('opacity', .6);
     // console.log( 'feature', feature );
@@ -189,7 +189,8 @@ Template.map.rendered = function() {
     var featureedges = g2.selectAll('line')
         .data(collectionedges.features).enter()
         .append('line')
-        .style('stroke', 'yellow'###HERE WE WRITE A FUNCTION TO RETRIEVE EACH NODE S COLOR)
+        .style('stroke', 'yellow')
+// ###HERE WE WRITE A FUNCTION TO RETRIEVE EACH NODE S COLOR
         .style('stroke-width', '4')
         .style('opacity', .8);
 

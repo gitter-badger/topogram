@@ -361,56 +361,59 @@ NetworkGraph = {
       if (layoutName == 'map') {
 
         $("#map").show();
+        $("#network").hide();
 
-        var coords = d3.select("#map").selectAll("circle")[0].map(function(d){
+        // WAS FOR CYTO/LEAFLEt, non working yet,let's check D3 instaed
 
-          return {
-            left : $(d).offset().left - $(d).prop("r")/2,
-            top : $(d).offset().top - $(d).prop("r")/2,
-            id : $(d).prop("id"),
-          }
-        })
-        console.log(coords);
+        // var coords = d3.select("#map").selectAll("circle")[0].map(function(d){
 
-        var positionMap = function() {
+        //   return {
+        //     left : $(d).offset().left - $(d).prop("r")/2,
+        //     top : $(d).offset().top - $(d).prop("r")/2,
+        //     id : $(d).prop("id"),
+        //   }
+        // })
+        // console.log(coords);
 
-          // get network viewport extent in pixels
-          var ext = self.net.nodes().renderedBoundingBox({
-            includeNodes : true,
-            includeEdges : false,
-            includeLabels : false
-          });
+        // var positionMap = function() {
 
-          // self.net.center();
-          var ext = self.net.extent();
-          console.log(ext);
+        //   // get network viewport extent in pixels
+        //   var ext = self.net.nodes().renderedBoundingBox({
+        //     includeNodes : true,
+        //     includeEdges : false,
+        //     includeLabels : false
+        //   });
 
-          // convert ext
-          var coordA = convertCoordsToLatLng(ext.x1,ext.y1);
-          var coordB = convertCoordsToLatLng(ext.x2,ext.y2);
-          console.log(coordA, coordB);
+        //   // self.net.center();
+        //   var ext = self.net.extent();
+        //   console.log(ext);
 
-          // resize map
-          resizeMap(coordA, coordB)
+        //   // convert ext
+        //   var coordA = convertCoordsToLatLng(ext.x1,ext.y1);
+        //   var coordB = convertCoordsToLatLng(ext.x2,ext.y2);
+        //   console.log(coordA, coordB);
 
-        }
+        //   // resize map
+        //   resizeMap(coordA, coordB)
 
-        // positionMap();
+        // }
 
-        layoutConfig = {
-            name: 'preset',
-            fit: false,
-            positions: function(node) {
-              return convertLatLngToCoords(node.data().lat, node.data().lng);
-              var coord = {}
-              coords.forEach(function(d){
-                if (node.data().id == d.id)  coord = { x: d.left, y: d.top}
-              })
-              return coord
-            },
-            ready : positionMap,
-            stop: savePositions // callback on layoutstop
-        }
+        // // positionMap();
+
+        // layoutConfig = {
+        //     name: 'preset',
+        //     fit: false,
+        //     positions: function(node) {
+        //       return convertLatLngToCoords(node.data().lat, node.data().lng);
+        //       var coord = {}
+        //       coords.forEach(function(d){
+        //         if (node.data().id == d.id)  coord = { x: d.left, y: d.top}
+        //       })
+        //       return coord
+        //     },
+        //     ready : positionMap,
+        //     stop: savePositions // callback on layoutstop
+        // }
 
 
       }
