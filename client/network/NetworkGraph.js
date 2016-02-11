@@ -362,7 +362,6 @@ NetworkGraph = {
 
         $("#map").show();
         $("#network").hide();
-        
 
         // WAS FOR CYTO/LEAFLEt, non working yet,let's check D3 instaed
 

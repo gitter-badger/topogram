@@ -212,8 +212,10 @@ for (var i = 0, l = selectedNodes.length; i < l; i++) {
         .append('line')
         .style('stroke', function(d) {
             for (var i = 0, l = edges.length; i < l; i++) {
+
             // console.log("edge",edges[i]._id)
             // console.log(d)
+
             // console.log("selectedNodes[i].data.id",selectedNodes[i])
             // console.log("d.properties._id",d.properties._id)
             if (edges[i]._id == d.properties._id) {
