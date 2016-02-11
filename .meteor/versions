@@ -33,6 +33,7 @@ ecmascript-runtime@0.2.6
 ejson@1.0.7
 email@1.0.8
 fastclick@1.0.7
+fongandrew:find-and-modify@0.2.1
 geojson-utils@1.0.4
 harrison:papa-parse@1.1.1
 hot-code-push@1.0.0
